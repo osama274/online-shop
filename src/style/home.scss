@@ -1,0 +1,23 @@
+.home-wrapper {
+  // border: solid 1px red;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  min-height: 70vh;
+  padding: 250px 0 0 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  div, p {
+    display: flex;
+    font-size: 32px;
+    color: rgb(246, 167, 157);
+    margin: 10px 0;
+    h1 {
+      font-weight: bold;
+      margin: 0 0 0 5px;
+    }
+  }
+}
