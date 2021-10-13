@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 import "../style/shopcard.scss";
 
 function Men(props) {
@@ -21,27 +22,30 @@ function Men(props) {
       })
     );
   }, [props.articlesDataJson, searchTerm]);
-
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
   return (
     <div className="projects-wrapper">
-      <h2>Projects</h2>
       <input
         type="text"
         placeholder="Search ..."
         className="inputSearch"
         onChange={handleSearch}
       />
-      <p>Hier verkaufen wir kleidung</p>
       <div className="projects-cards-wrapper">
         {projects.map((projectCard, index) => {
           return (
-            <div key ={index} className="project-card">
+            <div key={index} className="project-card">
               <img src={projectCard.imageURL} alt={projectCard.imageTitle} />
-              <p>{projectCard.imageDescription}</p>
-              <p className="price">{projectCard.thePrice}</p>
+                <div className="parg"><p>{projectCard.imageDescription}</p></div>
+              <div className="desc">
+              <button className="icon">
+                  <FaShoppingCart />
+                </button>
+                <p className="price">{projectCard.thePrice}</p>
+                
+              </div>
             </div>
           );
         })}
