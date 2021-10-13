@@ -1,11 +1,13 @@
 import React from "react";
-import Nav from "./Components/Nav";
-import Home from "./Components/Home";
-import Men from "./Components/Men";
-import Women from "./Components/Women";
-import Children from "./Components/Children";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.scss";
+import Nav from "./Components/Nav";
+import Home from "./Components/Home";
+import ShopGallery from "./Components/ShopGallery";
+import menArticlesDataJson from "./data/menData.json";
+import womenArticlesDataJson from "./data/womenData.json";
+import childrenArticlesDataJson from "./data/childrenData.json";
+
 
 function App() {
   return (
@@ -13,10 +15,18 @@ function App() {
       <div className="App">
         <Nav />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/men" component={Men} />
-          <Route path="/women" component={Women} />
-          <Route path="/children" component={Children} />
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/men">
+            <ShopGallery articlesDataJson={menArticlesDataJson} />
+          </Route>
+          <Route path="/women">
+            <ShopGallery articlesDataJson={womenArticlesDataJson} />
+          </Route>
+          <Route path="/children">
+            <ShopGallery articlesDataJson={childrenArticlesDataJson} />
+          </Route>
         </Switch>
       </div>
     </BrowserRouter>

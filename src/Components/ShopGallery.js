@@ -1,18 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "../style/shopcard.scss";
-import initialProjects from "../data/projectsData.json";
 
-function Projects() {
-  const [projects, setProjects] = useState(initialProjects);
-  const [searchTerm, setSearchTerm] = useState("n");
+function Men(props) {
+  const [projects, setProjects] = useState(props.articlesDataJson);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     setProjects(
-      initialProjects.filter((project) => {
-        // console.log(project)
+      props.articlesDataJson.filter((project) => {
         if (
-          // searchTerm === "" ||
           project.imageDescription
             .toLowerCase()
             .includes(searchTerm.toLowerCase()) ||
@@ -23,7 +20,7 @@ function Projects() {
         }
       })
     );
-  }, [searchTerm]);
+  }, [props.articlesDataJson, searchTerm]);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -39,13 +36,11 @@ function Projects() {
       />
       <p>Hier verkaufen wir kleidung</p>
       <div className="projects-cards-wrapper">
-        {projects.map((projectCard) => {
+        {projects.map((projectCard, index) => {
           return (
-            <div className="project-card">
+            <div key ={index} className="project-card">
               <img src={projectCard.imageURL} alt={projectCard.imageTitle} />
-              <p>
-                {projectCard.imageDescription}
-              </p>
+              <p>{projectCard.imageDescription}</p>
               <p className="price">{projectCard.thePrice}</p>
             </div>
           );
@@ -55,4 +50,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default Men;
