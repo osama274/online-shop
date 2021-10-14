@@ -1,30 +1,37 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import "../style/shopcard.scss";
+import "../style/women.scss";
 
-function Men(props) {
-  const [projects, setProjects] = useState(props.articlesDataJson);
+function Women(props) {
+  const initialProducts = props.articlesDataJson.filter(
+    (product) => product.gender === "women"
+  );
+  const [displayProducts, setDisplayProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    setProjects(
-      props.articlesDataJson.filter((project) => {
-        if (
+    setDisplayProducts(initialProducts);
+  }, [initialProducts, props.articlesDataJson]);
+
+  useEffect(() => {
+    setDisplayProducts(
+      initialProducts.filter((project) => {
+        return (
           project.imageDescription
             .toLowerCase()
             .includes(searchTerm.toLowerCase()) ||
-          project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          project.gender.toLowerCase().includes(searchTerm.toLowerCase()) ||
           project.thePrice.toLowerCase().includes(searchTerm.toLowerCase())
-        ) {
-          return project;
-        }
+        );
       })
     );
-  }, [props.articlesDataJson, searchTerm]);
+  }, [initialProducts, searchTerm]);
+
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
+
   return (
     <div className="projects-wrapper">
       <input
@@ -34,17 +41,18 @@ function Men(props) {
         onChange={handleSearch}
       />
       <div className="projects-cards-wrapper">
-        {projects.map((projectCard, index) => {
+        {displayProducts.map((projectCard, index) => {
           return (
             <div key={index} className="project-card">
               <img src={projectCard.imageURL} alt={projectCard.imageTitle} />
-                <div className="parg"><p>{projectCard.imageDescription}</p></div>
+              <div className="parg">
+                <p>{projectCard.imageDescription}</p>
+              </div>
               <div className="desc">
-              <button className="icon">
+                <button className="icon">
                   <FaShoppingCart />
                 </button>
                 <p className="price">{projectCard.thePrice}</p>
-                
               </div>
             </div>
           );
@@ -54,4 +62,4 @@ function Men(props) {
   );
 }
 
-export default Men;
+export default Women;
