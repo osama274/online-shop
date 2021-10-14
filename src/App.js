@@ -7,6 +7,7 @@ import Men from "./Components/Men";
 import Women from "./Components/Women";
 import Children from "./Components/Children";
 import ArticlesDataJson from "./data/articlesData.json";
+import "./style/articlespage.scss";
 
 function App() {
   return (

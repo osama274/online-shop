@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { useState, useEffect } from "react";
 import { FaShoppingCart } from "react-icons/fa";
@@ -12,7 +13,7 @@ function Children(props) {
 
   useEffect(() => {
     setDisplayProducts(initialProducts);
-  }, [initialProducts, props.articlesDataJson]);
+  }, []);
 
   useEffect(() => {
     setDisplayProducts(
@@ -26,14 +27,14 @@ function Children(props) {
         );
       })
     );
-  }, [initialProducts, searchTerm]);
+  }, [searchTerm]);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
 
   return (
-    <div className="projects-wrapper">
+    <div className="projects-wrapper children-project-wraper">
       <input
         type="text"
         placeholder="Search ..."
@@ -45,10 +46,10 @@ function Children(props) {
           return (
             <div key={index} className="project-card">
               <img src={projectCard.imageURL} alt={projectCard.imageTitle} />
-              <div className="parg">
+              <div className="image-description">
                 <p>{projectCard.imageDescription}</p>
               </div>
-              <div className="desc">
+              <div className="container">
                 <button className="icon">
                   <FaShoppingCart />
                 </button>

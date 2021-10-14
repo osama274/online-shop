@@ -1,0 +1,59 @@
+.projects-wrapper {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100%;
+  min-height: 70vh;
+  padding: 20px 50px;
+  .inputSearch {
+    width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #f1f5f8;
+    border: 1px solid blue;
+    border-radius: 0.25rem;
+  }
+  .projects-cards-wrapper {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 50vh;
+    .project-card {
+      border: solid 1px black;
+      background-color: white;
+      width: 300px;
+      height: 500px;
+      margin: 5px;
+      .image-description {
+        border-top: 1px solid rgb(78, 77, 77);
+        color: rgb(82, 89, 122);
+        padding: 8px;
+        height: 50px;
+        font-size: 0.85rem;
+      }
+      .container {
+        .price {
+          font-size: large;
+          margin: -20px 5px 0 auto;
+          width: fit-content;
+          color: rgb(255, 78, 8);
+        }
+        .icon {
+          color: green;
+          width: 50px;
+          font-size: 20px;
+          margin-left: 5px;
+          border: none;
+        }
+      }
+      img {
+        width: 100%;
+        height: 80%;
+      }
+    }
+  }
+}
